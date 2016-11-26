@@ -175,7 +175,78 @@ public class CyclopediaService {
 		}
 		return list;
 	}
-	
+	/*管理后台获取文章列表*/
+	public List<Map<String, Object>> quireCyclopedia() throws SQLException {
+
+		String sql = "SELECT id,icon,title,content,time FROM cyclopedia";
+		DBUtil dbUtil = new DBUtil(sql);
+
+		ResultSet result = null;
+		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		try {
+			result = dbUtil.pst.executeQuery();
+
+			while (result.next()) {
+                             
+				Integer id  = result.getInt("id");
+				String icon = result.getString("icon");
+				String title = result.getString("title");
+				String content = result.getString("content");
+				String time = result.getString("time");
+
+				Map<String, Object> map = new HashMap<String, Object>();
+				      
+					  map.put("id", id);
+				      map.put("icon", icon);
+				      map.put("title", title);
+				      map.put("content", content);
+				      map.put("time", time);
+				      
+				list.add(map);
+			}
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbUtil.close();
+			result.close();
+		}
+
+		return list;
+	}
+	//根据id修改文章
+	public int updataCyclopedia(Integer id){
+		
+		String sql = " UPDATE cyclopedia SET  WHERE id = "+id+"";
+		DBUtil dbUtil = new DBUtil(sql);
+		try {
+			dbUtil.pst.executeUpdate();
+			return 1;//success
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return 2;//error
+		} finally{
+			if(dbUtil != null)dbUtil.close();
+		}
+	}
+		
+	//删除一段时间的用药提醒
+		public int deleteRemindListByTimeStamp(String timeStamp){
+			
+			String sql = " delete from remind where timestamp = "+"'"+timeStamp+"'"+" ";
+			DBUtil dbUtil = new DBUtil(sql);
+			
+			
+			try {
+				dbUtil.pst.executeUpdate();
+				return 1;//success
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return 2;//error
+			} finally{
+				if(dbUtil != null)dbUtil.close();
+			}
+		}
 	
 	
 }

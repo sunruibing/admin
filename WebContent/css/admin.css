@@ -369,6 +369,18 @@ textarea[name=content] {
 textarea {
 	resize: none;
 }
-table tr{
-	height: 20px;
+
+/* IE下的样式 */ 
+.button-group>p span{
+	display: block;
+	overflow: hidden;
+	line-height:40px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+/*FF下的样式*/ 
+p{clear:both;}
+p span{
+	float:left;
+	max-width:350px;
 }

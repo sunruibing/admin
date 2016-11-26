@@ -1,18 +1,18 @@
 package com.po;
-//百科
+//管理后台文章添加
 public class Cyclopedia {
 	
 	private Integer id;//文章id
 	
-	private String icon;//列表页图片
+	private String icon;//文章图片
 	
-	private String title;//标题
+	private String title;//文章标题
 	
-	private String content;//内容
+	private String content;//文章内容
 	
-	private String time;//发布时间
+	private String time;//发表时间
 	
-	private Integer categoryId;//类别id
+	private Integer categoryId;//绫诲埆id
 
 	public Integer getId() {
 		return id;
