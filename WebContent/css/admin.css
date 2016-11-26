@@ -86,7 +86,6 @@ li {
 	margin-right: 10px;
 	line-height: 50px;
 }
-
 /********头部******/
 
 .header {
@@ -345,7 +344,7 @@ li {
 
 .button.bg-main.icon-check-square-o {
 	margin-left: 120px;
-	padding: 10px 30px;
+	padding: 10px 15px;
 }
 
 .button.bg-main.icon-check-square-o:hover {
@@ -369,4 +368,7 @@ textarea[name=content] {
 }
 textarea {
 	resize: none;
+}
+table tr{
+	height: 20px;
 }

@@ -29,7 +29,7 @@ public class AdminLogin extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("application/json");
 		
-		String phone = request.getParameter("name");//获取用户名
+		String phone = request.getParameter("phone");//获取用户名
 		String password = StringUtil.MD5Encode(request.getParameter("password"));//获取密码
 		
 		try {
