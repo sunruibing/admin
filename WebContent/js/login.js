@@ -11,6 +11,7 @@ function login(){
 						alert("用户名或密码错误");
 					} else {
 						window.location.href ='index.html';
+					
 					}
 				},
 				error : function() {
