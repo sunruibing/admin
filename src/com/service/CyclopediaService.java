@@ -26,10 +26,10 @@ import com.util.DBUtil;
 public class CyclopediaService {
 	
     
-	//根据分类id查询品格与安全、营养保健、育儿知识列表
-	public List<Cyclopedia> queryCylopediaList(Integer categoryId) throws SQLException{
+	//分页查询
+	public List<Cyclopedia> queryCylopediaList(Integer PageCount) throws SQLException{
 		
-		String sql = "SELECT id,icon,title,content,time FROM cyclopedia WHERE category_id = "+categoryId+" ";
+		String sql = " SELECT id,icon,title,content,time, collect_count FROM cyclopedia order by id desc limit "+PageCount+",20; ";
 		DBUtil dbUtil = new DBUtil(sql);
 		
 		
@@ -47,6 +47,7 @@ public class CyclopediaService {
 				String title = result.getString("title");
 				String content = result.getString("content");
 				String time = result.getString("time");
+				Integer collectCount = result.getInt("collect_count");
 				
 				Cyclopedia cyclopedia = new Cyclopedia();
 				cyclopedia.setId(id);
@@ -54,9 +55,9 @@ public class CyclopediaService {
 				cyclopedia.setTitle(title);
 				cyclopedia.setContent(content.substring(0, content.length()>20?20:content.length()));//截取部分文章内容
 				cyclopedia.setTime(time);
+				cyclopedia.setCollectCount(collectCount);
 				
 				list.add(cyclopedia);
-				
 			}
 			return list;
 		} catch (SQLException e) {
@@ -142,7 +143,7 @@ public class CyclopediaService {
 	//随机查询两条记录
 	public List<Cyclopedia> queryCyclopediaRandomTwo() throws SQLException{
 		
-		String sql = " select id,icon,title,content,time from cyclopedia order by Rand() limit 2 ";
+		String sql = " select id,icon,title,content,time, collect_count from cyclopedia order by Rand() limit 2 ";
 		DBUtil dbUtil = new DBUtil(sql);
 		
 		
@@ -162,6 +163,7 @@ public class CyclopediaService {
 				cyclopedia.setTitle(result.getString("title"));
 				cyclopedia.setContent(result.getString("content"));
 				cyclopedia.setTime(result.getString("time"));
+				cyclopedia.setCollectCount(result.getInt("collect_count"));
 				
 				list.add(cyclopedia);
 			}
@@ -175,7 +177,27 @@ public class CyclopediaService {
 		}
 		return list;
 	}
-	/*管理后台添加文章*/
+	
+	
+	
+	//add collect count in cyclopedia
+	public void insertCollectCount(Integer count, Integer cyclopediaId){
+		
+		String sql = " update cyclopedia set collect_count = "+count+" where id = "+cyclopediaId+" ";
+		DBUtil dbUtil = new DBUtil(sql);
+		
+		try {
+			dbUtil.pst.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if(dbUtil != null)dbUtil.close();
+		}
+	}
+	
+	
+	
+/*管理后台添加文章*/
 	
 	public int insertCyclopedia(Cyclopedia cyclopedia){
 		
@@ -247,24 +269,6 @@ public class CyclopediaService {
 			if(dbUtil != null)dbUtil.close();
 		}
 	}
-
-	//删除一段时间的用药提醒
-		public int deleteRemindListByTimeStamp(String timeStamp){
-			
-			String sql = " delete from remind where timestamp = "+"'"+timeStamp+"'"+" ";
-			DBUtil dbUtil = new DBUtil(sql);
-			
-			
-			try {
-				dbUtil.pst.executeUpdate();
-				return 1;//success
-			} catch (SQLException e) {
-				e.printStackTrace();
-				return 2;//error
-			} finally{
-				if(dbUtil != null)dbUtil.close();
-			}
-		}
 	
 	
 }

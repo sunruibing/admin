@@ -1,4 +1,4 @@
-package com.servlet.cylopedia;
+package com.servlet.cyclopedia;
 import java.io.IOException;
 
 import javax.servlet.ServletException;

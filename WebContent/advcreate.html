@@ -31,7 +31,7 @@
           <label>文章图片：</label>
         </div>
         <div class="field">
-          <input type="text" class="input w50" name="url2" value=""  />
+          <input type="file" class="input w50" name="url2" value=""  />
           <div class="tips"></div>
         </div>
       </div>
@@ -69,13 +69,14 @@ $(document).ready(function(){
 	$("#changeCylopedia").click(function(){
 		
 		var url1 = document.form1.url1.value;
+		alert(url1);
 		var url2 = document.form1.url2.value;
 		var title = document.form1.title.value;
 		var note = document.form1.note.value;
 		
 		 $.ajax({ 
 
-	        	url:"http://localhost:192.168.1.11/angelchildrens/AddCylopedia", 
+	        	url:"http://localhost:8080/admin/AddCylopedia", 
 
 	            type: 'post', 
 
@@ -85,7 +86,7 @@ $(document).ready(function(){
 	            success: function(msg) {
 	            	alert("添加成功");
 	            }
-		 
+		 });
 		
 	});
 		 return false;

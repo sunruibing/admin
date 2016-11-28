@@ -37,8 +37,8 @@ public class DBUtil {
     public DBUtil(String sql) {  
     	try {
     		
-            Class.forName("com.mysql.jdbc.Driver");//指定连接类型  
-            conn = DriverManager.getConnection(url, username, password);//获取连接  
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection(url, username, password);
             
             
             if(conn != null){
@@ -54,10 +54,9 @@ public class DBUtil {
     
     
     public void close() {
-    	
         try {  
             this.conn.close();
-            this.pst.close();  
+            this.pst.close();
         } catch (SQLException e) {  
             e.printStackTrace();  
         }  

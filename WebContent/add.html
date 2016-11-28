@@ -11,6 +11,22 @@
 <script type="text/javascript" src="js/jquery-3.1.0.min.js" ></script>
 <script src="js/jquery.js"></script>
 <script src="js/pintuer.js"></script>
+<script>
+$.ajax({
+	url:"http://localhost:8080/admin/FindSectionList",
+    type:"post",
+    dataType:"json",
+    success:function(data){
+   	 var sectionList = "<option value='0'>请选择科室</option>";
+   	 $.each(data, function(index, section){
+   		 sectionList += "<option value=" +section["id"]+ ">" +section["name"]+ "</option>";
+   	 });
+   	 $("#section").html(sectionList);
+
+    }
+});
+
+</script>
 </head>
 <body>
 <div class="panel admin-panel">
@@ -50,12 +66,8 @@
             <label>分类标题：</label>
           </div>
           <div class="field">
-            <select name="cid" class="input w50">
-              <option value="">请选择科室</option>
-              <option value="">产品分类</option>
-              <option value="">产品分类</option>
-              <option value="">产品分类</option>
-              <option value="">产品分类</option>
+            <select name="cid"  id="section" class="input w50">
+              
             </select>
             <div class="tips"></div>
           </div>

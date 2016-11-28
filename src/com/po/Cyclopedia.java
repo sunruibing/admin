@@ -1,20 +1,21 @@
 package com.po;
-//管理后台文章添加
+
+//百科
 public class Cyclopedia {
-	
-	private Integer id;//文章id
-	
-	private String icon;//缩略图
-	
-	private String cover;//文章图
-	
-	private String title;//文章标题
-	
-	private String content;//文章内容
-	
-	private String time;//发表时间
-	
-	private Integer categoryId;//绫诲埆id
+
+	private Integer id;// 文章id
+
+	private String icon;// 列表页图片
+
+	private String cover;// 缩略图
+
+	private String title;// 标题
+
+	private String content;// 内容
+
+	private String time;// 发布时间
+
+	private Integer collectCount;
 
 	public Integer getId() {
 		return id;
@@ -64,20 +65,18 @@ public class Cyclopedia {
 		this.time = time;
 	}
 
-	public Integer getCategoryId() {
-		return categoryId;
+	public Integer getCollectCount() {
+		return collectCount;
 	}
 
-	public void setCategoryId(Integer categoryId) {
-		this.categoryId = categoryId;
+	public void setCollectCount(Integer collectCount) {
+		this.collectCount = collectCount;
 	}
 
 	@Override
 	public String toString() {
 		return "Cyclopedia [id=" + id + ", icon=" + icon + ", cover=" + cover + ", title=" + title + ", content="
-				+ content + ", time=" + time + ", categoryId=" + categoryId + "]";
+				+ content + ", time=" + time + ", collectCount=" + collectCount + "]";
 	}
 
-	
-	
 }
