@@ -24,10 +24,10 @@ public class DBUtil {
 	public static int sum = 0;
 	
 	
-	public static final String url = "jdbc:mysql://localhost/demo?characterEncoding=utf8&useSSL=false";  
+	public static final String url = "jdbc:mysql://192.168.1.11/angelchildrens?characterEncoding=utf8&useSSL=false";  
     public static final String name = "com.mysql.jdbc.Driver";  
-    public static final String username = "root";  
-    public static final String password = "123456";
+    public static final String username = "sungoudan";  
+    public static final String password = "sungoudan";
   
     
     public Connection conn = null;  

@@ -7,6 +7,7 @@ $(document).ready(function(){
         	  $.each(data, function(commentIndex, comment){
         		  $("#goods3").html($("#goods3").html()+ "<tr>"+
         	      "<td>"+comment['id']+"</td>"+
+        	      "<td>"+'<img src='+ comment["cover"] +' width="50" height="50" border-radius="25" />' +"</td>"+
         	      "<td>"+'<img src='+ comment["icon"] +' width="120" height="50" />' +"</td>"+
         	      "<td>"+comment['title'] +"</td>"+
         	      "<td>"+'<div class="button-group"><p><span>'+comment['content']+'</span></p></div>' +"</td>"+
@@ -19,9 +20,5 @@ $(document).ready(function(){
         		  "</tr>");
         	  });
         }
-	});
-	//根据id修改内容
-	$("#add #changeCylopedia").click(function(){
-		alert("lkdjfkld");
 	});
 });

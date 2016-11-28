@@ -175,10 +175,26 @@ public class CyclopediaService {
 		}
 		return list;
 	}
+	/*管理后台添加文章*/
+	
+	public int insertCyclopedia(Cyclopedia cyclopedia){
+		
+		String sql = " insert into cyclopedia(icon, cover, title, content, time) values("+"'"+cyclopedia.getIcon()+"'"+","+"'"+cyclopedia.getCover()+"'"+","+"'"+cyclopedia.getTitle()+"'"+","+"'"+cyclopedia.getContent()+"'"+","+"'"+cyclopedia.getTime()+"'"+")";
+		DBUtil dbUtil = new DBUtil(sql);
+		
+		
+		try {
+			dbUtil.pst.executeUpdate();
+			return 1;//success
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return 2;//error
+		}
+	}
 	/*管理后台获取文章列表*/
 	public List<Map<String, Object>> quireCyclopedia() throws SQLException {
 
-		String sql = "SELECT id,icon,title,content,time FROM cyclopedia";
+		String sql = "SELECT id,icon,cover,title,content,time FROM cyclopedia";
 		DBUtil dbUtil = new DBUtil(sql);
 
 		ResultSet result = null;
@@ -190,6 +206,7 @@ public class CyclopediaService {
                              
 				Integer id  = result.getInt("id");
 				String icon = result.getString("icon");
+				String cover = result.getString("cover");
 				String title = result.getString("title");
 				String content = result.getString("content");
 				String time = result.getString("time");
@@ -198,6 +215,7 @@ public class CyclopediaService {
 				      
 					  map.put("id", id);
 				      map.put("icon", icon);
+				      map.put("cover", cover);
 				      map.put("title", title);
 				      map.put("content", content);
 				      map.put("time", time);
@@ -229,7 +247,7 @@ public class CyclopediaService {
 			if(dbUtil != null)dbUtil.close();
 		}
 	}
-		
+
 	//删除一段时间的用药提醒
 		public int deleteRemindListByTimeStamp(String timeStamp){
 			

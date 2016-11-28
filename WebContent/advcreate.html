@@ -8,6 +8,7 @@
 <title></title>
 <link rel="stylesheet" href="css/pintuer.css">
 <link rel="stylesheet" href="css/admin.css">
+<script type="text/javascript" src="js/jquery-3.1.0.min.js" ></script>
 <script src="js/jquery.js"></script>
 <script src="js/pintuer.js"></script>
 </head>
@@ -15,13 +16,22 @@
 <div class="panel admin-panel margin-top" id="add">
   <div class="panel-head"><strong><span class="icon-pencil-square-o"></span>增加内容</strong></div>
   <div class="body-content">
-    <form method="post" class="form-x" action="">    
-      <div class="form-group">
+    <form name="form1" class="form-x" action=""> 
+     <div class="form-group">
         <div class="label">
-          <label>图片：</label>
+          <label>缩略图：</label>
         </div>
         <div class="field">
-          <input type="text" class="input w50" name="url" value=""  />
+          <input type="file" class="input w50" name="url1" value=""  />
+          <div class="tips"></div>
+        </div>
+      </div>   
+      <div class="form-group">
+        <div class="label">
+          <label>文章图片：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input w50" name="url2" value=""  />
           <div class="tips"></div>
         </div>
       </div>
@@ -30,25 +40,16 @@
           <label>标题：</label>
         </div>
         <div class="field">
-          <input type="text" class="input w50" value="" name="title" data-validate="required:请输入标题" />
+          <input type="text" class="input w50" value="" name="title"  />
           <div class="tips"></div>
         </div>
       </div>
       <div class="form-group">
         <div class="label">
-          <label>时间：</label>
+          <label>描述：</label>
         </div>
         <div class="field">
-          <input type="text" class="input w50" value="" name="title" data-validate="required:请输入标题" />
-          <div class="tips"></div>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="label">
-          <label>ID：</label>
-        </div>
-        <div class="field">
-          <input type="text" class="input w50" name="sort" value="0"  data-validate="required:,number:排序必须为数字" />
+          <textarea class="input" name="note" style=" height:90px; width:450px"></textarea>
           <div class="tips"></div>
         </div>
       </div>
@@ -63,4 +64,34 @@
     </form>
   </div>
 </div>
-</body></html>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#changeCylopedia").click(function(){
+		
+		var url1 = document.form1.url1.value;
+		var url2 = document.form1.url2.value;
+		var title = document.form1.title.value;
+		var note = document.form1.note.value;
+		
+		 $.ajax({ 
+
+	        	url:"http://localhost:192.168.1.11/angelchildrens/AddCylopedia", 
+
+	            type: 'post', 
+
+	            dataType:'json',
+
+	            data: $(".form-x").serializeArray(),
+	            success: function(msg) {
+	            	alert("添加成功");
+	            }
+		 
+		
+	});
+		 return false;
+});
+</script>
+
+
+</body>
+</html>

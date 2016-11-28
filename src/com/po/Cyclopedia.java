@@ -4,7 +4,9 @@ public class Cyclopedia {
 	
 	private Integer id;//文章id
 	
-	private String icon;//文章图片
+	private String icon;//缩略图
+	
+	private String cover;//文章图
 	
 	private String title;//文章标题
 	
@@ -28,6 +30,14 @@ public class Cyclopedia {
 
 	public void setIcon(String icon) {
 		this.icon = icon;
+	}
+
+	public String getCover() {
+		return cover;
+	}
+
+	public void setCover(String cover) {
+		this.cover = cover;
 	}
 
 	public String getTitle() {
@@ -64,8 +74,10 @@ public class Cyclopedia {
 
 	@Override
 	public String toString() {
-		return "Cyclopedia [id=" + id + ", icon=" + icon + ", title=" + title + ", content=" + content + ", time="
-				+ time + ", categoryId=" + categoryId + "]";
+		return "Cyclopedia [id=" + id + ", icon=" + icon + ", cover=" + cover + ", title=" + title + ", content="
+				+ content + ", time=" + time + ", categoryId=" + categoryId + "]";
 	}
+
+	
 	
 }
