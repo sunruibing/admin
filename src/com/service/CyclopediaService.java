@@ -68,9 +68,6 @@ public class CyclopediaService {
 		}
 		return list;
 	}
-	
-	
-	
 	//根据文章id查询内容详情
 	public Cyclopedia queryCyclopediaById(Integer cyclopediaId) throws SQLException{
 		
@@ -103,9 +100,6 @@ public class CyclopediaService {
 		}
 		return cyclopedia;
 	}
-	
-	
-	
 	//查询所有科室
 	public List<Map<String, String>> querySectionList() throws SQLException {
 		

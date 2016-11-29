@@ -12,9 +12,9 @@ $(document).ready(function(){
         	      "<td>"+comment['title'] +"</td>"+
         	      "<td>"+'<div class="button-group"><p><span>'+comment['content']+'</span></p></div>' +"</td>"+
         	      "<td>"+comment['time']+"</td>"+
-        	      "<td>"+ '<div class="button-group">'+
+        	      "<td id='del'>"+ '<div class="button-group">'+
         	      '<a class="button border-main" href="advcreate.html"><span class="icon-edit"></span> 修改</a>'+
-        	      '<a class="button border-red" href="javascript:void(0)" onclick="return del(1,1)"><span class="icon-trash-o"></span> 删除</a>'+
+        	      '<a class="button border-red" ><span class="icon-trash-o"></span> 删除</a>'+
         	      '</div>'+ 
         		  "</td>"+
         		  "</tr>");

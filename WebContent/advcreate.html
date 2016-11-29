@@ -69,11 +69,10 @@ $(document).ready(function(){
 	$("#changeCylopedia").click(function(){
 		
 		var url1 = document.form1.url1.value;
-		alert(url1);
 		var url2 = document.form1.url2.value;
 		var title = document.form1.title.value;
 		var note = document.form1.note.value;
-		
+             		
 		 $.ajax({ 
 
 	        	url:"http://localhost:8080/admin/AddCylopedia", 

@@ -186,4 +186,27 @@ public class CollectService {
 	
 	
 	
+	//管理后台通过文章id删除文章
+	public int deleteCyclopediaById(Integer id){
+		
+		String sql = " DELETE FROM cyclopedia WHERE id = "+id+" ";
+		DBUtil dbUtil = new DBUtil(sql);
+		
+		
+		try {
+			dbUtil.pst.executeUpdate();
+			return 1;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return 2;
+		} finally{
+			if(dbUtil != null)dbUtil.close();
+		}
+	}
+	
+	
+	
+	
+	
+	
 }
